@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — Friends App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --blue: #3B82F6; --blue-d: #1D4ED8; --gray50: #F9FAFB; --gray100: #F3F4F6; --gray200: #E5E7EB; --gray600: #4B5563; --gray700: #374151; --gray900: #111827; }
+    body { font-family: 'Inter', sans-serif; color: var(--gray900); background: #fff; line-height: 1.7; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid var(--gray100); position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); z-index: 100; }
+    .logo { font-size: 20px; font-weight: 800; color: var(--gray900); text-decoration: none; }
+    .logo span { color: var(--blue); }
+    .back { color: var(--blue); text-decoration: none; font-size: 14px; font-weight: 500; }
+    .hero { max-width: 640px; margin: 0 auto; padding: 60px 24px 40px; text-align: center; }
+    .hero h1 { font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+    .hero p { font-size: 17px; color: var(--gray600); margin-bottom: 28px; }
+    .email-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--blue); color: #fff;
+      padding: 14px 28px; border-radius: 12px;
+      text-decoration: none; font-weight: 700; font-size: 16px;
+      transition: background 0.15s;
+    }
+    .email-btn:hover { background: var(--blue-d); }
+    .container { max-width: 720px; margin: 0 auto; padding: 20px 24px 80px; }
+    .faq-section { margin-top: 48px; }
+    .faq-section h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 24px; }
+    .faq { border: 1px solid var(--gray200); border-radius: 12px; overflow: hidden; margin-bottom: 12px; }
+    .faq summary {
+      padding: 18px 20px; font-size: 15px; font-weight: 600; cursor: pointer;
+      list-style: none; display: flex; justify-content: space-between; align-items: center;
+      background: var(--gray50);
+    }
+    .faq summary:hover { background: var(--gray100); }
+    .faq summary::after { content: '+'; font-size: 20px; color: var(--blue); font-weight: 400; }
+    .faq[open] summary::after { content: '−'; }
+    .faq-body { padding: 16px 20px; font-size: 15px; color: var(--gray700); border-top: 1px solid var(--gray200); background: #fff; }
+    .faq-body p { margin-bottom: 10px; }
+    .faq-body p:last-child { margin-bottom: 0; }
+    footer { border-top: 1px solid var(--gray100); padding: 32px 24px; text-align: center; }
+    footer a { color: var(--gray600); text-decoration: none; font-size: 14px; margin: 0 12px; }
+    footer p { color: var(--gray600); font-size: 13px; margin-top: 12px; }
+    @media (max-width: 640px) { nav { padding: 16px 20px; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">friends<span>.</span></a>
+    <a href="/" class="back">← Back to home</a>
+  </nav>
+
+  <div class="hero">
+    <h1>How can we help?</h1>
+    <p>Can't find your answer below? Email us and we'll get back to you within 24 hours.</p>
+    <a href="mailto:support@friendsapp.net" class="email-btn">
+      ✉️ &nbsp; support@friendsapp.net
+    </a>
+  </div>
+
+  <div class="container">
+    <div class="faq-section">
+      <h2>Frequently asked questions</h2>
+
+      <details class="faq">
+        <summary>How do I add friends?</summary>
+        <div class="faq-body">
+          <p>There are two ways to add friends:</p>
+          <p><strong>Search by username:</strong> Tap the Search icon on your profile screen and type their username.</p>
+          <p><strong>Import from contacts:</strong> Tap "Contacts" on your profile screen. We match your contacts' phone numbers to Friends accounts — your contact list is never uploaded to our servers.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>Who can see my events?</summary>
+        <div class="faq-body">
+          <p>When creating an event you choose one of four visibility levels:</p>
+          <p><strong>Friends only</strong> — only people on your friends list can see the event.</p>
+          <p><strong>Friends of friends</strong> — your friends and their friends can see it.</p>
+          <p><strong>Custom</strong> — you hand-pick specific people to invite.</p>
+          <p><strong>Public</strong> — anyone using Friends nearby can see it on the map.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>How do I delete my account?</summary>
+        <div class="faq-body">
+          <p>Go to your Profile tab → scroll down to the Account section → tap Sign Out. To permanently delete your account and all associated data, email us at <a href="mailto:support@friendsapp.net">support@friendsapp.net</a> with the subject "Delete my account" from the email address you registered with. We'll process the deletion within 30 days.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>Why does the app need my location?</summary>
+        <div class="faq-body">
+          <p>Location is used to show you events happening near you on the map. We use your location only while you have the app open — we do not track your location in the background or store your location history.</p>
+          <p>You can revoke location access at any time in your device's Settings → Friends → Location.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>How do I report or block someone?</summary>
+        <div class="faq-body">
+          <p><strong>Block:</strong> Go to the user's profile → tap the three-dot menu → Block. Blocked users cannot see your events, send you friend requests, or invite you to events.</p>
+          <p><strong>Report:</strong> Go to the user's profile → tap the three-dot menu → Report. Select a reason and submit. Our team reviews all reports.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>I'm not receiving push notifications</summary>
+        <div class="faq-body">
+          <p>First check that notifications are enabled in your device Settings → Friends → Notifications.</p>
+          <p>Then check your in-app preferences: Profile → Notification Preferences — make sure the relevant types are turned on.</p>
+          <p>If notifications are still not arriving, try signing out and back in. If the issue persists, email us.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>How do I cancel an event I created?</summary>
+        <div class="faq-body">
+          <p>Open the event → tap the three-dot menu in the top right → Cancel Event. All RSVPed attendees will be notified automatically.</p>
+        </div>
+      </details>
+
+      <details class="faq">
+        <summary>Is Friends free?</summary>
+        <div class="faq-body">
+          <p>Yes — Friends is completely free to download and use. There are no subscriptions, no premium tiers, and no in-app purchases.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+
+  <footer>
+    <div>
+      <a href="/">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="support.html">Support</a>
+    </div>
+    <p>&copy; 2026 Friends App. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

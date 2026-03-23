@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Friends App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #3B82F6;
+      --gray100: #F3F4F6;
+      --gray200: #E5E7EB;
+      --gray600: #4B5563;
+      --gray700: #374151;
+      --gray900: #111827;
+    }
+    body { font-family: 'Inter', sans-serif; color: var(--gray900); background: #fff; line-height: 1.7; }
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px; border-bottom: 1px solid var(--gray100);
+      position: sticky; top: 0; background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px); z-index: 100;
+    }
+    .logo { font-size: 20px; font-weight: 800; color: var(--gray900); text-decoration: none; }
+    .logo span { color: var(--blue); }
+    .back { color: var(--blue); text-decoration: none; font-size: 14px; font-weight: 500; }
+    .back:hover { text-decoration: underline; }
+    .container { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
+    .meta { margin-bottom: 40px; }
+    .meta h1 { font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
+    .meta p { color: var(--gray600); font-size: 15px; }
+    h2 { font-size: 20px; font-weight: 700; margin: 40px 0 12px; }
+    h3 { font-size: 16px; font-weight: 600; margin: 24px 0 8px; color: var(--gray700); }
+    p { font-size: 15px; color: var(--gray700); margin-bottom: 14px; }
+    ul { padding-left: 20px; margin-bottom: 14px; }
+    li { font-size: 15px; color: var(--gray700); margin-bottom: 6px; }
+    .table-wrap { overflow-x: auto; margin: 16px 0 24px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { background: var(--gray100); text-align: left; padding: 10px 14px; font-weight: 600; border: 1px solid var(--gray200); }
+    td { padding: 10px 14px; border: 1px solid var(--gray200); color: var(--gray700); vertical-align: top; }
+    .highlight { background: #EFF6FF; border-left: 3px solid var(--blue); padding: 14px 18px; border-radius: 4px; margin: 16px 0; font-size: 14px; color: var(--gray700); }
+    a { color: var(--blue); }
+    footer { border-top: 1px solid var(--gray100); padding: 32px 24px; text-align: center; }
+    footer a { color: var(--gray600); text-decoration: none; font-size: 14px; margin: 0 12px; }
+    footer p { color: var(--gray600); font-size: 13px; margin-top: 12px; }
+    @media (max-width: 640px) { nav { padding: 16px 20px; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">friends<span>.</span></a>
+    <a href="/" class="back">← Back to home</a>
+  </nav>
+
+  <div class="container">
+    <div class="meta">
+      <h1>Privacy Policy</h1>
+      <p>Last updated: January 1, 2026 &nbsp;·&nbsp; Effective: January 1, 2026</p>
+    </div>
+
+    <div class="highlight">
+      <strong>The short version:</strong> We collect only what we need to make the app work. We never sell your data. We never store your raw phone number. Your location is only used to show nearby events — we don't track where you go.
+    </div>
+
+    <h2>1. Who we are</h2>
+    <p>Friends App ("Friends", "we", "us", or "our") operates the Friends mobile application available on iOS and Android. This Privacy Policy explains what information we collect, how we use it, and your rights regarding that information.</p>
+    <p>If you have questions, contact us at <a href="mailto:support@friendsapp.net">support@friendsapp.net</a>.</p>
+
+    <h2>2. Information we collect</h2>
+
+    <h3>Information you provide directly</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Data</th><th>Why we collect it</th><th>Stored?</th></tr>
+        <tr><td>Display name</td><td>Shown on your profile and events</td><td>Yes, in your profile</td></tr>
+        <tr><td>Username</td><td>Lets friends find you by handle</td><td>Yes, in your profile</td></tr>
+        <tr><td>Profile photo</td><td>Shown on your profile and events</td><td>Yes, in secure cloud storage</td></tr>
+        <tr><td>Bio</td><td>Optional — shown on your profile</td><td>Yes, if you add one</td></tr>
+        <tr><td>Interests / categories</td><td>Personalises event recommendations</td><td>Yes, in your profile</td></tr>
+        <tr><td>Phone number</td><td>Find friends from your contacts</td><td><strong>No</strong> — hashed with SHA-256 before leaving your device; raw number never stored</td></tr>
+      </table>
+    </div>
+
+    <h3>Information collected automatically</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Data</th><th>Why we collect it</th><th>Stored?</th></tr>
+        <tr><td>Firebase User ID</td><td>Identifies your account across sessions</td><td>Yes</td></tr>
+        <tr><td>Precise location</td><td>Shows events on the map near you</td><td>No — used in-session only, not stored</td></tr>
+        <tr><td>Push notification token</td><td>Sends you event invites and RSVPs</td><td>Yes, attached to your account</td></tr>
+        <tr><td>App usage events</td><td>Anonymous analytics (e.g. "event created") via Amplitude</td><td>Yes, anonymised</td></tr>
+      </table>
+    </div>
+
+    <h3>Contact list access</h3>
+    <p>If you choose to find friends from your contacts, we access your contact list on-device, hash each phone number with SHA-256, and query our database for matches. <strong>We never upload, store, or transmit your raw contact list.</strong> We only store the SHA-256 hashes of numbers you explicitly share with us.</p>
+
+    <h2>3. How we use your information</h2>
+    <ul>
+      <li><strong>App functionality</strong> — creating your account, showing your profile, letting friends find you, displaying events on the map</li>
+      <li><strong>Notifications</strong> — alerting you to event invites, RSVPs, friend requests, and event updates</li>
+      <li><strong>Friend discovery</strong> — matching your contacts' hashed phone numbers to existing accounts</li>
+      <li><strong>Safety</strong> — detecting abuse, enforcing our Terms of Service, and investigating reports</li>
+      <li><strong>Analytics</strong> — understanding how the app is used in aggregate to improve it (no personal data in analytics)</li>
+    </ul>
+
+    <h2>4. What we never do</h2>
+    <ul>
+      <li>We <strong>never sell</strong> your personal data to third parties</li>
+      <li>We <strong>never use</strong> your data for advertising targeting</li>
+      <li>We <strong>never store</strong> your raw phone number or raw contact list</li>
+      <li>We <strong>never track</strong> your location history — location is used only in-session to show the map</li>
+      <li>We <strong>never store</strong> your email address in your public profile</li>
+    </ul>
+
+    <h2>5. How we share your information</h2>
+    <p>We share information only in these limited cases:</p>
+    <ul>
+      <li><strong>With other users</strong> — your name, username, profile photo, and events are visible to friends (and friends-of-friends or public, depending on your privacy settings)</li>
+      <li><strong>Service providers</strong> — we use Firebase (Google) for authentication, database, storage, and cloud functions; and Amplitude for anonymous analytics. Both are bound by their own privacy policies and data processing agreements</li>
+      <li><strong>Legal requirements</strong> — if required by law or to protect the rights and safety of our users</li>
+    </ul>
+
+    <h2>6. Data retention</h2>
+    <p>Your data is retained for as long as your account is active. When you delete your account, your profile, events, and personal data are permanently deleted within 30 days. Anonymous analytics data may be retained longer in aggregate form.</p>
+
+    <h2>7. Your rights</h2>
+    <p>Depending on where you live, you may have rights including:</p>
+    <ul>
+      <li><strong>Access</strong> — request a copy of the data we hold about you</li>
+      <li><strong>Deletion</strong> — request deletion of your account and associated data</li>
+      <li><strong>Correction</strong> — update incorrect information via the app's Edit Profile screen</li>
+      <li><strong>Portability</strong> — request your data in a portable format</li>
+    </ul>
+    <p>To exercise any of these rights, contact us at <a href="mailto:support@friendsapp.net">support@friendsapp.net</a>.</p>
+
+    <h2>8. Children's privacy</h2>
+    <p>Friends is not directed to children under 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has created an account, please contact us immediately and we will delete the account.</p>
+
+    <h2>9. Security</h2>
+    <p>We use industry-standard security measures including encrypted connections (TLS), Firebase security rules that enforce server-side access control, and hashed storage for sensitive identifiers. No method of transmission or storage is 100% secure, and we cannot guarantee absolute security.</p>
+
+    <h2>10. Third-party services</h2>
+    <p>The app integrates with:</p>
+    <ul>
+      <li><strong>Firebase</strong> (Google) — authentication, database, storage, and cloud functions</li>
+      <li><strong>Google Maps / Places</strong> — venue and location search</li>
+      <li><strong>Ticketmaster</strong> — local event discovery (queries proxied through our server; your location is not sent to Ticketmaster)</li>
+      <li><strong>Amplitude</strong> — anonymous usage analytics</li>
+      <li><strong>Expo</strong> — push notification delivery</li>
+    </ul>
+
+    <h2>11. Changes to this policy</h2>
+    <p>We may update this Privacy Policy from time to time. We will notify you of significant changes via an in-app notification or email. The "Last updated" date at the top of this page reflects the most recent revision.</p>
+
+    <h2>12. Contact</h2>
+    <p>Questions about this Privacy Policy? Contact us:</p>
+    <ul>
+      <li>Email: <a href="mailto:support@friendsapp.net">support@friendsapp.net</a></li>
+      <li>Website: <a href="https://friendsapp.net">friendsapp.net</a></li>
+    </ul>
+  </div>
+
+  <footer>
+    <div>
+      <a href="/">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="support.html">Support</a>
+    </div>
+    <p>&copy; 2026 Friends App. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

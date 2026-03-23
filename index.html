@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Friends — See what your friends are up to</title>
+  <meta name="description" content="Stop missing out. See what your friends are doing right now, join their hangouts, or create your own and invite your crew." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:   #3B82F6;
+      --blue-d: #1D4ED8;
+      --gray50: #F9FAFB;
+      --gray100:#F3F4F6;
+      --gray200:#E5E7EB;
+      --gray600:#4B5563;
+      --gray700:#374151;
+      --gray900:#111827;
+      --white:  #ffffff;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--gray900);
+      line-height: 1.6;
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      border-bottom: 1px solid var(--gray100);
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+    .logo { font-size: 22px; font-weight: 800; color: var(--gray900); text-decoration: none; letter-spacing: -0.5px; }
+    .logo span { color: var(--blue); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--gray600); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .nav-links a:hover { color: var(--gray900); }
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: background 0.15s;
+    }
+    .nav-cta:hover { background: var(--blue-d); }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 100px 24px 80px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      background: #EFF6FF;
+      color: var(--blue);
+      border: 1px solid #BFDBFE;
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 28px;
+      letter-spacing: 0.2px;
+    }
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+      color: var(--gray900);
+    }
+    h1 em { color: var(--blue); font-style: normal; }
+    .hero p {
+      font-size: clamp(17px, 2.5vw, 20px);
+      color: var(--gray600);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.65;
+    }
+    .cta-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gray900);
+      color: var(--white);
+      padding: 15px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      transition: transform 0.1s, background 0.15s;
+    }
+    .btn-primary:hover { background: var(--gray700); transform: translateY(-1px); }
+    .btn-primary svg { width: 22px; height: 22px; fill: currentColor; }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--gray100);
+      color: var(--gray900);
+      padding: 15px 28px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      transition: background 0.15s;
+    }
+    .btn-secondary:hover { background: var(--gray200); }
+
+    /* ── Feature strip ── */
+    .features {
+      background: var(--gray50);
+      border-top: 1px solid var(--gray100);
+      border-bottom: 1px solid var(--gray100);
+      padding: 60px 24px;
+    }
+    .features-grid {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 40px;
+    }
+    .feature { text-align: center; }
+    .feature-icon {
+      font-size: 36px;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .feature h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .feature p { font-size: 15px; color: var(--gray600); line-height: 1.6; }
+
+    /* ── How it works ── */
+    .how {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+    .how h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -1px; margin-bottom: 48px; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; text-align: left; }
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--blue);
+      color: var(--white);
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .step p { font-size: 14px; color: var(--gray600); line-height: 1.6; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--gray100);
+      padding: 40px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+    .footer-links a { color: var(--gray600); text-decoration: none; font-size: 14px; }
+    .footer-links a:hover { color: var(--gray900); }
+    footer p { color: var(--gray600); font-size: 13px; }
+
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">friends<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="support.html">Support</a></li>
+    </ul>
+    <a href="#download" class="nav-cta">Download</a>
+  </nav>
+
+  <section class="hero">
+    <div class="badge">Now available on the App Store</div>
+    <h1>Stop missing out on <em>what your friends</em> are doing</h1>
+    <p>See your friends' hangouts on a live map, join in with one tap, or create your own event and invite your crew in seconds.</p>
+    <div class="cta-group" id="download">
+      <a href="#" class="btn-primary">
+        <!-- Apple logo -->
+        <svg viewBox="0 0 814 1000"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-57.8-155.5-127.4C46 790.9 0 663 0 541.8c0-207.9 135.4-318 269-318 69.4 0 127.1 45.5 170.8 45.5 42.1 0 107.9-48 185.4-48 29.9 0 108.2 2.6 168.1 73.3zm-126.7-176.1c30.6-35.8 52.4-85.6 52.4-135.4 0-6.9-.6-13.9-1.9-19.5-49.4 1.9-108.8 33.1-144.4 73.3-27.5 31.2-53.1 81.1-53.1 131.6 0 7.4 1.3 14.9 1.9 17.2 3.2.6 8.4 1.3 13.6 1.3 44.9 0 100.9-30 131.5-68.5z"/></svg>
+        App Store
+      </a>
+      <a href="#" class="btn-secondary">
+        <!-- Play logo -->
+        <svg viewBox="0 0 24 24" style="width:22px;height:22px;fill:#3B82F6"><path d="M3 20.5v-17c0-.83.94-1.3 1.6-.8l14 8.5c.6.37.6 1.23 0 1.6l-14 8.5c-.66.5-1.6.03-1.6-.8z"/></svg>
+        Google Play
+      </a>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="features-grid">
+      <div class="feature">
+        <span class="feature-icon">🗺️</span>
+        <h3>Live hangout map</h3>
+        <p>See your friends' events pinned on a real-time map. Know what's happening near you right now.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">⚡</span>
+        <h3>One-tap RSVP</h3>
+        <p>Join a friend's hangout instantly. No group chats, no back-and-forth — just show up.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🎉</span>
+        <h3>Create any hangout</h3>
+        <p>Coffee, drinks, sports, movies — create an event in seconds and invite exactly who you want.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🔒</span>
+        <h3>Private by default</h3>
+        <p>Control who sees your plans. Share with just friends, friends-of-friends, or keep it custom.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🤖</span>
+        <h3>AI event planner</h3>
+        <p>Describe what you're thinking and our AI fills in the details — venue, time, category, everything.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🎟️</span>
+        <h3>Discover local events</h3>
+        <p>Browse real events happening near you from Ticketmaster alongside your friends' hangouts.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <p class="section-label">How it works</p>
+    <h2>Hanging out has never been easier</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Add your friends</h3>
+        <p>Search by username or import from your contacts. Your friend network is private.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>See what's happening</h3>
+        <p>Open the map and see every hangout your friends have planned near you.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Join or create</h3>
+        <p>Tap to join a friend's hangout, or create your own and get notified when people RSVP.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Never miss out</h3>
+        <p>Get notified when friends plan something near you. No more finding out after the fact.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <a href="/" class="logo">friends<span>.</span></a>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="support.html">Support</a>
+    </div>
+    <p>&copy; 2026 Friends App. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
