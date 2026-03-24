@@ -4,6 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — Friends App</title>
+  <meta name="description" content="Friends App Privacy Policy — what data we collect, how we use it, and your rights. We never sell your data or store your raw phone number." />
+  <meta property="og:title" content="Privacy Policy — Friends App" />
+  <meta property="og:description" content="We collect only what we need to make the app work. We never sell your data." />
+  <meta property="og:url" content="https://friendsapp.net/privacy.html" />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
@@ -16,17 +26,39 @@
       --gray700: #374151;
       --gray900: #111827;
     }
-    body { font-family: 'Inter', sans-serif; color: var(--gray900); background: #fff; line-height: 1.7; }
+    body { font-family: 'Inter', sans-serif; color: var(--gray900); background: #fff; line-height: 1.6; }
+
+    /* ── Skip link ── */
+    .skip-link {
+      position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+    }
+    .skip-link:focus {
+      position: fixed; top: 0; left: 0; width: auto; height: auto; padding: 12px 20px;
+      background: var(--blue); color: #fff; font-weight: 600; font-size: 14px;
+      text-decoration: none; z-index: 9999; border-radius: 0 0 8px 0;
+    }
+
+    /* ── Focus indicators ── */
+    *:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
     nav {
       display: flex; align-items: center; justify-content: space-between;
       padding: 20px 40px; border-bottom: 1px solid var(--gray100);
       position: sticky; top: 0; background: rgba(255,255,255,0.95);
       backdrop-filter: blur(8px); z-index: 100;
     }
-    .logo { font-size: 20px; font-weight: 800; color: var(--gray900); text-decoration: none; }
+    .logo { font-size: 22px; font-weight: 800; color: var(--gray900); text-decoration: none; letter-spacing: -0.5px; }
     .logo span { color: var(--blue); }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
     .back { color: var(--blue); text-decoration: none; font-size: 14px; font-weight: 500; }
     .back:hover { text-decoration: underline; }
+    .nav-download {
+      background: var(--gray900); color: #fff;
+      padding: 8px 18px; border-radius: 8px;
+      text-decoration: none; font-weight: 600; font-size: 13px;
+      transition: background 0.15s;
+    }
+    .nav-download:hover { background: var(--gray700); }
     .container { max-width: 720px; margin: 0 auto; padding: 60px 24px 80px; }
     .meta { margin-bottom: 40px; }
     .meta h1 { font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
@@ -43,18 +75,27 @@
     .highlight { background: #EFF6FF; border-left: 3px solid var(--blue); padding: 14px 18px; border-radius: 4px; margin: 16px 0; font-size: 14px; color: var(--gray700); }
     a { color: var(--blue); }
     footer { border-top: 1px solid var(--gray100); padding: 32px 24px; text-align: center; }
+    .footer-logo { font-size: 22px; font-weight: 800; color: var(--gray900); text-decoration: none; letter-spacing: -0.5px; display: inline-block; margin-bottom: 12px; }
+    .footer-logo span { color: var(--blue); }
     footer a { color: var(--gray600); text-decoration: none; font-size: 14px; margin: 0 12px; }
+    footer a:hover { color: var(--gray900); }
     footer p { color: var(--gray600); font-size: 13px; margin-top: 12px; }
     @media (max-width: 640px) { nav { padding: 16px 20px; } }
   </style>
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
   <nav>
     <a href="/" class="logo">friends<span>.</span></a>
-    <a href="/" class="back">← Back to home</a>
+    <div class="nav-right">
+      <a href="/" class="back">← Back to home</a>
+      <a href="#" class="nav-download">Download</a><!-- TODO: replace # with App Store link -->
+    </div>
   </nav>
 
+  <main id="main-content">
   <div class="container">
     <div class="meta">
       <h1>Privacy Policy</h1>
@@ -74,7 +115,7 @@
     <h3>Information you provide directly</h3>
     <div class="table-wrap">
       <table>
-        <tr><th>Data</th><th>Why we collect it</th><th>Stored?</th></tr>
+        <tr><th scope="col">Data</th><th scope="col">Why we collect it</th><th scope="col">Stored?</th></tr>
         <tr><td>Display name</td><td>Shown on your profile and events</td><td>Yes, in your profile</td></tr>
         <tr><td>Username</td><td>Lets friends find you by handle</td><td>Yes, in your profile</td></tr>
         <tr><td>Profile photo</td><td>Shown on your profile and events</td><td>Yes, in secure cloud storage</td></tr>
@@ -87,7 +128,7 @@
     <h3>Information collected automatically</h3>
     <div class="table-wrap">
       <table>
-        <tr><th>Data</th><th>Why we collect it</th><th>Stored?</th></tr>
+        <tr><th scope="col">Data</th><th scope="col">Why we collect it</th><th scope="col">Stored?</th></tr>
         <tr><td>Firebase User ID</td><td>Identifies your account across sessions</td><td>Yes</td></tr>
         <tr><td>Precise location</td><td>Shows events on the map near you</td><td>No — used in-session only, not stored</td></tr>
         <tr><td>Push notification token</td><td>Sends you event invites and RSVPs</td><td>Yes, attached to your account</td></tr>
@@ -163,8 +204,10 @@
       <li>Website: <a href="https://friendsapp.net">friendsapp.net</a></li>
     </ul>
   </div>
+  </main>
 
   <footer>
+    <a href="/" class="footer-logo">friends<span>.</span></a>
     <div>
       <a href="/">Home</a>
       <a href="privacy.html">Privacy Policy</a>

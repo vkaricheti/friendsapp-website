@@ -4,16 +4,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Support — Friends App</title>
+  <meta name="description" content="Get help with the Friends App. Find answers to common questions about adding friends, privacy settings, notifications, and more. Email us at support@friendsapp.net." />
+  <meta property="og:title" content="Support — Friends App" />
+  <meta property="og:description" content="Get help with Friends App. FAQ and direct email support." />
+  <meta property="og:url" content="https://friendsapp.net/support.html" />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --blue: #3B82F6; --blue-d: #1D4ED8; --gray50: #F9FAFB; --gray100: #F3F4F6; --gray200: #E5E7EB; --gray600: #4B5563; --gray700: #374151; --gray900: #111827; }
-    body { font-family: 'Inter', sans-serif; color: var(--gray900); background: #fff; line-height: 1.7; }
+    body { font-family: 'Inter', sans-serif; color: var(--gray900); background: #fff; line-height: 1.6; }
+
+    /* ── Skip link ── */
+    .skip-link {
+      position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+    }
+    .skip-link:focus {
+      position: fixed; top: 0; left: 0; width: auto; height: auto; padding: 12px 20px;
+      background: var(--blue); color: #fff; font-weight: 600; font-size: 14px;
+      text-decoration: none; z-index: 9999; border-radius: 0 0 8px 0;
+    }
+
+    /* ── Focus indicators ── */
+    *:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
     nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid var(--gray100); position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); z-index: 100; }
-    .logo { font-size: 20px; font-weight: 800; color: var(--gray900); text-decoration: none; }
+    .logo { font-size: 22px; font-weight: 800; color: var(--gray900); text-decoration: none; letter-spacing: -0.5px; }
     .logo span { color: var(--blue); }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
     .back { color: var(--blue); text-decoration: none; font-size: 14px; font-weight: 500; }
+    .back:hover { text-decoration: underline; }
+    .nav-download {
+      background: var(--gray900); color: #fff;
+      padding: 8px 18px; border-radius: 8px;
+      text-decoration: none; font-weight: 600; font-size: 13px;
+      transition: background 0.15s;
+    }
+    .nav-download:hover { background: var(--gray700); }
     .hero { max-width: 640px; margin: 0 auto; padding: 60px 24px 40px; text-align: center; }
     .hero h1 { font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
     .hero p { font-size: 17px; color: var(--gray600); margin-bottom: 28px; }
@@ -41,18 +74,27 @@
     .faq-body p { margin-bottom: 10px; }
     .faq-body p:last-child { margin-bottom: 0; }
     footer { border-top: 1px solid var(--gray100); padding: 32px 24px; text-align: center; }
+    .footer-logo { font-size: 22px; font-weight: 800; color: var(--gray900); text-decoration: none; letter-spacing: -0.5px; display: inline-block; margin-bottom: 12px; }
+    .footer-logo span { color: var(--blue); }
     footer a { color: var(--gray600); text-decoration: none; font-size: 14px; margin: 0 12px; }
+    footer a:hover { color: var(--gray900); }
     footer p { color: var(--gray600); font-size: 13px; margin-top: 12px; }
     @media (max-width: 640px) { nav { padding: 16px 20px; } }
   </style>
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
   <nav>
     <a href="/" class="logo">friends<span>.</span></a>
-    <a href="/" class="back">← Back to home</a>
+    <div class="nav-right">
+      <a href="/" class="back">← Back to home</a>
+      <a href="#" class="nav-download">Download</a><!-- TODO: replace # with App Store link -->
+    </div>
   </nav>
 
+  <main id="main-content">
   <div class="hero">
     <h1>How can we help?</h1>
     <p>Can't find your answer below? Email us and we'll get back to you within 24 hours.</p>
@@ -133,8 +175,10 @@
 
     </div>
   </div>
+  </main>
 
   <footer>
+    <a href="/" class="footer-logo">friends<span>.</span></a>
     <div>
       <a href="/">Home</a>
       <a href="privacy.html">Privacy Policy</a>

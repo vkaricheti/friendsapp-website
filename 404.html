@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found — Friends App</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #3B82F6;
+      --gray100: #F3F4F6;
+      --gray600: #4B5563;
+      --gray900: #111827;
+    }
+    body { font-family: 'Inter', sans-serif; color: var(--gray900); background: #fff; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+    .skip-link {
+      position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+    }
+    .skip-link:focus {
+      position: fixed; top: 0; left: 0; width: auto; height: auto; padding: 12px 20px;
+      background: var(--blue); color: #fff; font-weight: 600; font-size: 14px;
+      text-decoration: none; z-index: 9999; border-radius: 0 0 8px 0;
+    }
+    *:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px; border-bottom: 1px solid var(--gray100);
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
+    }
+    .logo { font-size: 22px; font-weight: 800; color: var(--gray900); text-decoration: none; letter-spacing: -0.5px; }
+    .logo span { color: var(--blue); }
+    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 24px; text-align: center; }
+    .error-content { max-width: 480px; }
+    .error-code { font-size: 96px; font-weight: 900; letter-spacing: -4px; color: var(--gray100); line-height: 1; margin-bottom: 8px; }
+    h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px; }
+    p { font-size: 16px; color: var(--gray600); margin-bottom: 32px; }
+    .btn-home {
+      display: inline-block; background: var(--gray900); color: #fff;
+      padding: 13px 28px; border-radius: 12px;
+      text-decoration: none; font-weight: 600; font-size: 15px;
+      transition: background 0.15s;
+    }
+    .btn-home:hover { background: #374151; }
+    footer { border-top: 1px solid var(--gray100); padding: 32px 24px; text-align: center; }
+    footer a { color: var(--gray600); text-decoration: none; font-size: 14px; margin: 0 12px; }
+    footer a:hover { color: var(--gray900); }
+    footer p { color: var(--gray600); font-size: 13px; margin-top: 12px; }
+    @media (max-width: 640px) { nav { padding: 16px 20px; } }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <nav>
+    <a href="/" class="logo">friends<span>.</span></a>
+    <a href="/" style="color: var(--blue); text-decoration: none; font-size: 14px; font-weight: 500;">← Back to home</a>
+  </nav>
+
+  <main id="main-content">
+    <div class="error-content">
+      <div class="error-code" aria-hidden="true">404</div>
+      <h1>Page not found</h1>
+      <p>The page you're looking for doesn't exist or may have moved.</p>
+      <a href="/" class="btn-home">Go back home</a>
+    </div>
+  </main>
+
+  <footer>
+    <div>
+      <a href="/">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="support.html">Support</a>
+    </div>
+    <p>&copy; 2026 Friends App. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

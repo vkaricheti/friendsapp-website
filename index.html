@@ -6,6 +6,10 @@
   <title>Friends — See what your friends are up to</title>
   <meta name="description" content="Stop missing out. See what your friends are doing right now, join their hangouts, or create your own and invite your crew." />
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+
   <!-- Open Graph -->
   <meta property="og:title" content="Friends — See what your friends are up to" />
   <meta property="og:description" content="Stop missing out. See what your friends are doing right now, join their hangouts, or create your own." />
@@ -36,6 +40,19 @@
     }
 
     body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--gray900); line-height: 1.6; }
+
+    /* ── Skip link ── */
+    .skip-link {
+      position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+    }
+    .skip-link:focus {
+      position: fixed; top: 0; left: 0; width: auto; height: auto; padding: 12px 20px;
+      background: var(--blue); color: #fff; font-weight: 600; font-size: 14px;
+      text-decoration: none; z-index: 9999; border-radius: 0 0 8px 0;
+    }
+
+    /* ── Focus indicators ── */
+    *:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 
     /* ── Nav ── */
     nav {
@@ -72,7 +89,7 @@
       background-size: cover; background-position: center;
     }
     .hero-slides .slide.active { opacity: 1; }
-/* Dark overlay so text stays legible */
+    /* Dark overlay so text stays legible */
     .hero-overlay {
       position: absolute; inset: 0; z-index: 1;
       background: linear-gradient(to bottom, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.38) 60%, rgba(0,0,0,0.60) 100%);
@@ -96,33 +113,38 @@
       max-width: 560px; margin: 0 auto 40px; line-height: 1.65;
     }
 
-    /* Slide dots */
+    /* Slide dots — visual dot 8px, tap target ~44px via padding */
     .slide-dots {
-      display: flex; justify-content: center; gap: 8px;
+      display: flex; justify-content: center; gap: 0;
       position: relative; z-index: 2; padding-bottom: 20px;
     }
     .slide-dots button {
       width: 8px; height: 8px; border-radius: 50%;
-      border: none; padding: 0; cursor: pointer;
-      background: rgba(255,255,255,0.35); transition: background 0.3s, transform 0.3s;
+      border: none; padding: 18px; margin: -18px 4px; cursor: pointer;
+      background-color: rgba(255,255,255,0.55);
+      background-clip: content-box;
+      transition: background-color 0.3s, transform 0.3s;
     }
-    .slide-dots button.active { background: #fff; transform: scale(1.25); }
+    .slide-dots button.active {
+      background-color: #fff;
+      transform: scale(1.25);
+    }
 
     /* ── App Store button ── */
     .appstore-btn {
       display: inline-flex; align-items: center; gap: 12px;
-      background: #000; color: #fff;
+      background: var(--blue); color: #fff;
       padding: 13px 24px; border-radius: 14px;
-      text-decoration: none; transition: transform 0.1s, opacity 0.15s;
-      border: 1.5px solid rgba(255,255,255,0.25);
+      text-decoration: none; transition: transform 0.15s, background 0.15s;
+      border: none;
     }
-    .appstore-btn:hover { transform: translateY(-2px); opacity: 0.88; }
+    .appstore-btn:hover { transform: translateY(-2px); background: var(--blue-d); }
     .appstore-btn svg { width: 24px; height: 24px; fill: #fff; flex-shrink: 0; }
     .appstore-btn-text { display: flex; flex-direction: column; text-align: left; line-height: 1.2; }
     .appstore-btn-text .small { font-size: 11px; font-weight: 500; opacity: 0.8; letter-spacing: 0.3px; }
     .appstore-btn-text .big { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
     .hero-cta { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-    .hero-sub { font-size: 13px; color: rgba(255,255,255,0.55); }
+    .hero-sub { font-size: 13px; color: rgba(255,255,255,0.75); }
 
     /* ── Social proof ── */
     .social-proof {
@@ -132,7 +154,7 @@
     }
     .proof-item { text-align: center; }
     .proof-num { font-size: 28px; font-weight: 900; color: #fff; letter-spacing: -1px; }
-    .proof-label { font-size: 13px; color: rgba(255,255,255,0.65); margin-top: 2px; }
+    .proof-label { font-size: 13px; color: rgba(255,255,255,0.80); margin-top: 2px; }
     .proof-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.25); }
 
     /* ── Features ── */
@@ -176,7 +198,7 @@
     }
     .cta-banner h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
     .cta-banner p { font-size: 17px; color: #9CA3AF; margin-bottom: 32px; }
-    .cta-banner .appstore-btn { border-color: rgba(255,255,255,0.2); }
+    .cta-banner .appstore-btn { background: var(--blue); }
     .cta-banner .hero-sub { color: #6B7280; }
 
     /* ── Footer ── */
@@ -189,16 +211,54 @@
     .footer-links a:hover { color: var(--gray900); }
     footer p { color: var(--gray600); font-size: 13px; }
 
+    @media (max-width: 768px) {
+      .hero { padding: 72px 24px 60px; }
+      .features-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    }
+
     @media (max-width: 640px) {
       nav { padding: 16px 20px; }
       .nav-links { display: none; }
       .proof-divider { display: none; }
-      .email-capture input { width: 100%; }
-      .email-capture { flex-direction: column; align-items: center; }
     }
   </style>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Friends App",
+        "url": "https://friendsapp.net",
+        "logo": "https://friendsapp.net/favicon.svg",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "support@friendsapp.net",
+          "contactType": "customer support"
+        }
+      },
+      {
+        "@type": "MobileApplication",
+        "name": "Friends",
+        "operatingSystem": "iOS",
+        "applicationCategory": "SocialNetworkingApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "See what your friends are doing right now. Join hangouts with one tap or create your own and invite your crew.",
+        "url": "https://friendsapp.net"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
+
+  <a href="#main-content" class="skip-link">Skip to content</a>
 
   <nav>
     <a href="/" class="logo">friends<span>.</span></a>
@@ -210,24 +270,26 @@
     <a href="#" class="nav-cta">Download Free</a><!-- TODO: replace # with App Store link -->
   </nav>
 
+  <main id="main-content">
+
   <!-- Hero -->
   <div class="hero-wrap">
     <div class="hero-slides" aria-hidden="true">
       <div class="slide active" style="background-image: url('images/hero2.jpg')"></div>
-      <div class="slide" style="background-image: url('images/hero6.jpg')"></div>
-      <div class="slide" style="background-image: url('images/hero8.jpg')"></div>
-      <div class="slide" style="background-image: url('images/hero7.jpg')"></div>
-      <div class="slide" style="background-image: url('images/hero12.jpg')"></div>
-      <div class="slide" style="background-image: url('images/hero3.jpg')"></div>
-      <div class="slide" style="background-image: url('images/hero15.jpg')"></div>
-      <div class="slide" style="background-image: url('images/hero5.jpg')"></div>
-      <div class="slide" style="background-image: url('images/hero11.jpg')"></div>
-      <div class="slide" style="background-image: url('images/hero9.jpg')"></div>
-      <div class="slide" style="background-image: url('images/hero16.jpg')"></div>
-      <div class="slide" style="background-image: url('images/hero4.jpg')"></div>
-      <div class="slide" style="background-image: url('images/hero13.jpg')"></div>
-      <div class="slide" style="background-image: url('images/hero14.jpg')"></div>
-      <div class="slide" style="background-image: url('images/hero10.jpg')"></div>
+      <div class="slide" data-src="images/hero6.jpg"></div>
+      <div class="slide" data-src="images/hero8.jpg"></div>
+      <div class="slide" data-src="images/hero7.jpg"></div>
+      <div class="slide" data-src="images/hero12.jpg"></div>
+      <div class="slide" data-src="images/hero3.jpg"></div>
+      <div class="slide" data-src="images/hero15.jpg"></div>
+      <div class="slide" data-src="images/hero5.jpg"></div>
+      <div class="slide" data-src="images/hero11.jpg"></div>
+      <div class="slide" data-src="images/hero9.jpg"></div>
+      <div class="slide" data-src="images/hero16.jpg"></div>
+      <div class="slide" data-src="images/hero4.jpg"></div>
+      <div class="slide" data-src="images/hero13.jpg"></div>
+      <div class="slide" data-src="images/hero14.jpg"></div>
+      <div class="slide" data-src="images/hero10.jpg"></div>
     </div>
     <div class="hero-overlay"></div>
 
@@ -268,22 +330,22 @@
   </section>
 
   <!-- Slide dots -->
-  <div class="slide-dots" id="slide-dots" aria-hidden="true">
-    <button class="active" data-index="0"></button>
-    <button data-index="1"></button>
-    <button data-index="2"></button>
-    <button data-index="3"></button>
-    <button data-index="4"></button>
-    <button data-index="5"></button>
-    <button data-index="6"></button>
-    <button data-index="7"></button>
-    <button data-index="8"></button>
-    <button data-index="9"></button>
-    <button data-index="10"></button>
-    <button data-index="11"></button>
-    <button data-index="12"></button>
-    <button data-index="13"></button>
-    <button data-index="14"></button>
+  <div class="slide-dots" id="slide-dots">
+    <button class="active" data-index="0" aria-label="Go to slide 1"></button>
+    <button data-index="1" aria-label="Go to slide 2"></button>
+    <button data-index="2" aria-label="Go to slide 3"></button>
+    <button data-index="3" aria-label="Go to slide 4"></button>
+    <button data-index="4" aria-label="Go to slide 5"></button>
+    <button data-index="5" aria-label="Go to slide 6"></button>
+    <button data-index="6" aria-label="Go to slide 7"></button>
+    <button data-index="7" aria-label="Go to slide 8"></button>
+    <button data-index="8" aria-label="Go to slide 9"></button>
+    <button data-index="9" aria-label="Go to slide 10"></button>
+    <button data-index="10" aria-label="Go to slide 11"></button>
+    <button data-index="11" aria-label="Go to slide 12"></button>
+    <button data-index="12" aria-label="Go to slide 13"></button>
+    <button data-index="13" aria-label="Go to slide 14"></button>
+    <button data-index="14" aria-label="Go to slide 15"></button>
   </div>
 
   </div><!-- /hero-wrap -->
@@ -397,6 +459,8 @@
     </div>
   </section>
 
+  </main>
+
   <footer>
     <a href="/" class="logo">friends<span>.</span></a>
     <div class="footer-links">
@@ -408,12 +472,24 @@
   </footer>
 
   <script>
-    // Hero slideshow
+    // Hero slideshow with lazy-loading for slides 2-15
     (function() {
       const slides = document.querySelectorAll('.hero-slides .slide');
       const dots   = document.querySelectorAll('#slide-dots button');
       let current  = 0;
       let timer;
+      let imagesLoaded = false;
+
+      function loadDeferredImages() {
+        if (imagesLoaded) return;
+        imagesLoaded = true;
+        slides.forEach(function(slide) {
+          const src = slide.getAttribute('data-src');
+          if (src) {
+            slide.style.backgroundImage = "url('" + src + "')";
+          }
+        });
+      }
 
       function goTo(index) {
         slides[current].classList.remove('active');
@@ -428,11 +504,14 @@
       function startTimer() { timer = setInterval(next, 5000); }
       function resetTimer()  { clearInterval(timer); startTimer(); }
 
-      dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => { goTo(i); resetTimer(); });
+      dots.forEach(function(dot, i) {
+        dot.addEventListener('click', function() { goTo(i); resetTimer(); });
       });
 
       startTimer();
+
+      // Load deferred slide images 2 seconds after page load
+      setTimeout(loadDeferredImages, 2000);
     })();
   </script>
 
