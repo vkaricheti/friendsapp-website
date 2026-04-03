@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1200" />
+  <title>OG Image — Friends App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+      background: #0F172A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── background map dots ── */
+    .bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(59,130,246,0.18) 0%, transparent 50%),
+        radial-gradient(circle at 80% 30%, rgba(59,130,246,0.12) 0%, transparent 40%);
+    }
+
+    /* subtle grid */
+    .grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* map pins decorative */
+    .pin {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid;
+    }
+    .pin-blue  { background: rgba(59,130,246,0.3); border-color: #3B82F6; top: 15%; left: 72%; }
+    .pin-green { background: rgba(16,185,129,0.3); border-color: #10B981; top: 55%; left: 82%; }
+    .pin-amber { background: rgba(245,158,11,0.3); border-color: #F59E0B; top: 70%; left: 65%; }
+    .pin-pink  { background: rgba(236,72,153,0.3); border-color: #EC4899; top: 30%; left: 88%; }
+    .pin-pulse {
+      position: absolute;
+      top: 55%; left: 82%;
+      width: 36px; height: 36px;
+      margin-left: -9px; margin-top: -9px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(16,185,129,0.4);
+      animation: none;
+    }
+
+    /* ── main content ── */
+    .content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 80px;
+      max-width: 700px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 32px;
+      opacity: 0.9;
+    }
+    .logo span { color: #3B82F6; }
+
+    .headline {
+      font-size: 64px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+    .headline em {
+      font-style: normal;
+      color: #3B82F6;
+    }
+
+    .sub {
+      font-size: 22px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    /* ── right side phone mockup placeholder ── */
+    .phone {
+      position: absolute;
+      right: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 220px;
+      height: 440px;
+      background: rgba(255,255,255,0.05);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 36px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .phone-inner {
+      width: 90%;
+      height: 90%;
+      background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+      border-radius: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 20px;
+    }
+    .phone-map {
+      width: 100%;
+      height: 140px;
+      background: linear-gradient(135deg, #1E3A5F 0%, #0C1D35 100%);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .phone-map::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .phone-pin {
+      position: absolute;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .phone-pin-1 { background: #3B82F6; top: 30%; left: 40%; box-shadow: 0 0 6px #3B82F6; }
+    .phone-pin-2 { background: #10B981; top: 55%; left: 65%; box-shadow: 0 0 6px #10B981; }
+    .phone-pin-3 { background: #F59E0B; top: 45%; left: 20%; box-shadow: 0 0 6px #F59E0B; }
+
+    .phone-card {
+      width: 100%;
+      height: 60px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .phone-row {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+    }
+    .phone-btn {
+      flex: 1;
+      height: 36px;
+      border-radius: 10px;
+      background: #3B82F6;
+    }
+    .phone-btn-ghost {
+      flex: 1;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="grid"></div>
+
+  <!-- Decorative pins -->
+  <div class="pin pin-blue"></div>
+  <div class="pin pin-green"></div>
+  <div class="pin-pulse"></div>
+  <div class="pin pin-amber"></div>
+  <div class="pin pin-pink"></div>
+
+  <div class="content">
+    <div class="logo">friends<span>.</span></div>
+    <div class="headline">Stop texting.<br /><em>Start hanging.</em></div>
+    <div class="sub">See what friends are doing right now.<br />Join in, or create a plan in 30 seconds.</div>
+  </div>
+
+  <!-- Phone mockup -->
+  <div class="phone">
+    <div class="phone-inner">
+      <div class="phone-map">
+        <div class="phone-pin phone-pin-1"></div>
+        <div class="phone-pin phone-pin-2"></div>
+        <div class="phone-pin phone-pin-3"></div>
+      </div>
+      <div class="phone-card"></div>
+      <div class="phone-row">
+        <div class="phone-btn"></div>
+        <div class="phone-btn-ghost"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
