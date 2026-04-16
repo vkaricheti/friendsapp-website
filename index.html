@@ -146,16 +146,6 @@
     .hero-cta { display: flex; flex-direction: column; align-items: center; gap: 12px; }
     .hero-sub { font-size: 13px; color: rgba(255,255,255,0.75); }
 
-    /* ── Social proof ── */
-    .social-proof {
-      margin-top: 48px; padding-top: 48px;
-      border-top: 1px solid rgba(255,255,255,0.2);
-      display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap;
-    }
-    .proof-item { text-align: center; }
-    .proof-num { font-size: 28px; font-weight: 900; color: #fff; letter-spacing: -1px; }
-    .proof-label { font-size: 13px; color: rgba(255,255,255,0.80); margin-top: 2px; }
-    .proof-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.25); }
 
     /* ── Features ── */
     .features { background: var(--gray50); border-top: 1px solid var(--gray100); border-bottom: 1px solid var(--gray100); padding: 80px 24px; }
@@ -219,7 +209,7 @@
     @media (max-width: 640px) {
       nav { padding: 16px 20px; }
       .nav-links { display: none; }
-      .proof-divider { display: none; }
+
     }
   </style>
 
@@ -310,23 +300,6 @@
       <p class="hero-sub">Free · No in-app purchases · Notify me at launch</p>
     </div>
 
-    <!-- Social proof -->
-    <div class="social-proof">
-      <div class="proof-item">
-        <div class="proof-num">200+</div>
-        <div class="proof-label">Beta testers</div>
-      </div>
-      <div class="proof-divider"></div>
-      <div class="proof-item">
-        <div class="proof-num">Free</div>
-        <div class="proof-label">No subscriptions</div>
-      </div>
-      <div class="proof-divider"></div>
-      <div class="proof-item">
-        <div class="proof-num">1,000+</div>
-        <div class="proof-label">Beta hangouts</div>
-      </div>
-    </div>
   </section>
 
   <!-- Slide dots -->
