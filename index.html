@@ -146,6 +146,35 @@
     .hero-cta { display: flex; flex-direction: column; align-items: center; gap: 12px; }
     .hero-sub { font-size: 13px; color: rgba(255,255,255,0.75); }
 
+    /* ── Waitlist form ── */
+    .waitlist-form { display: flex; gap: 0; max-width: 420px; width: 100%; }
+    .waitlist-form input[type="email"] {
+      flex: 1; padding: 14px 18px; font-size: 15px; font-family: inherit;
+      border: none; border-radius: 14px 0 0 14px; outline: none;
+      background: rgba(255,255,255,0.95); color: var(--gray900);
+    }
+    .waitlist-form input[type="email"]::placeholder { color: #9CA3AF; }
+    .waitlist-form button {
+      padding: 14px 22px; font-size: 15px; font-weight: 700; font-family: inherit;
+      background: var(--blue); color: #fff; border: none;
+      border-radius: 0 14px 14px 0; cursor: pointer;
+      transition: background 0.15s; white-space: nowrap;
+    }
+    .waitlist-form button:hover { background: var(--blue-d); }
+    .waitlist-success {
+      display: none; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 14px; padding: 14px 20px;
+      color: #fff; font-size: 15px; font-weight: 500; backdrop-filter: blur(4px);
+    }
+    .waitlist-success svg { flex-shrink: 0; }
+    /* Dark-bg variant (bottom CTA) */
+    .waitlist-form.dark input[type="email"] {
+      background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2);
+    }
+    .waitlist-form.dark input[type="email"]::placeholder { color: #6B7280; }
+    .waitlist-success.dark { background: rgba(255,255,255,0.08); }
+
 
     /* ── Features ── */
     .features { background: var(--gray50); border-top: 1px solid var(--gray100); border-bottom: 1px solid var(--gray100); padding: 80px 24px; }
@@ -257,7 +286,7 @@
       <li><a href="#how">How it works</a></li>
       <li><a href="support.html">Support</a></li>
     </ul>
-    <a href="mailto:support@friendsapp.net?subject=Notify me when FRIENDS launches" class="nav-cta">Get Notified</a>
+    <a href="#hero-waitlist" class="nav-cta" onclick="document.getElementById('hero-waitlist').querySelector('input').focus();return false;">Get Notified</a>
   </nav>
 
   <main id="main-content">
@@ -289,15 +318,15 @@
     <p>See your friends' hangouts on a live map, join in with one tap, or create your own event and invite your crew in seconds.</p>
 
     <div class="hero-cta">
-      <a href="mailto:support@friendsapp.net?subject=Notify me when FRIENDS launches" class="appstore-btn">
-        <!-- Bell icon -->
-        <svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-        <span class="appstore-btn-text">
-          <span class="small">Launching soon on</span>
-          <span class="big">iOS App Store</span>
-        </span>
-      </a>
-      <p class="hero-sub">Free · No in-app purchases · Notify me at launch</p>
+      <form class="waitlist-form" id="hero-waitlist" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
+        <input type="email" name="email" placeholder="Enter your email" required autocomplete="email" aria-label="Email address" />
+        <button type="submit">Notify me</button>
+      </form>
+      <div class="waitlist-success" id="hero-success" role="status">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        You're on the list — we'll email you at launch.
+      </div>
+      <p class="hero-sub">Free · No in-app purchases · iOS</p>
     </div>
 
   </section>
@@ -421,14 +450,15 @@
     <h2>Ready to stop missing out?</h2>
     <p>FRIENDS is launching soon on iOS. Get notified the day it's live.</p>
     <div class="hero-cta">
-      <a href="mailto:support@friendsapp.net?subject=Notify me when FRIENDS launches" class="appstore-btn">
-        <svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-        <span class="appstore-btn-text">
-          <span class="small">Coming soon to the</span>
-          <span class="big">iOS App Store</span>
-        </span>
-      </a>
-      <p class="hero-sub">Free · No in-app purchases · Tap to get notified</p>
+      <form class="waitlist-form dark" id="bottom-waitlist" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
+        <input type="email" name="email" placeholder="Enter your email" required autocomplete="email" aria-label="Email address" />
+        <button type="submit">Notify me</button>
+      </form>
+      <div class="waitlist-success dark" id="bottom-success" role="status">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        You're on the list — we'll email you at launch.
+      </div>
+      <p class="hero-sub" style="color:#6B7280">Free · No in-app purchases · iOS</p>
     </div>
   </section>
 
@@ -443,6 +473,35 @@
     </div>
     <p>&copy; 2026 Rao Apps Corporation. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Waitlist form — async submit, show success state in-page
+    (function() {
+      function handleWaitlist(formId, successId) {
+        var form = document.getElementById(formId);
+        var success = document.getElementById(successId);
+        if (!form) return;
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var data = new FormData(form);
+          fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+            .then(function(res) {
+              if (res.ok) {
+                form.style.display = 'none';
+                success.style.display = 'flex';
+              } else {
+                res.json().then(function(d) {
+                  alert(d.errors ? d.errors.map(function(e){return e.message}).join(', ') : 'Something went wrong. Please try again.');
+                });
+              }
+            })
+            .catch(function() { alert('Something went wrong. Please try again.'); });
+        });
+      }
+      handleWaitlist('hero-waitlist', 'hero-success');
+      handleWaitlist('bottom-waitlist', 'bottom-success');
+    })();
+  </script>
 
   <script>
     // Hero slideshow with lazy-loading for slides 2-15
